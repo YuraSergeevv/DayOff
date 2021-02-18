@@ -172,8 +172,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container {
-  max-width: 1160px;
-  padding: 0 10px;
+  max-width: 1170px;
+  padding: 0 15px;
   margin: 0 auto;
 }
 
@@ -2056,6 +2056,7 @@ input[type=number] {
   height: 20px;
   top: 50%;
   font-size: 0;
+  z-index: 1;
 }
 
 .slick-prev {
@@ -2143,17 +2144,32 @@ input[type=number] {
           justify-content: space-between;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
+  .abs {
+    display: none;
+  }
   .slick-prev {
-    left: -15px;
+    left: -20px;
   }
   .slick-next {
-    right: -15px;
+    right: -20px;
   }
   .slider__inner .slick-prev {
     left: 50px;
   }
   .slider__inner .slick-next {
     right: 50px;
+  }
+  .slider .slick-prev {
+    left: 5px;
+  }
+  .slider .slick-next {
+    right: 5px;
+  }
+  .slider__item-title {
+    font-size: 65px;
+  }
+  .slider__item-disc {
+    padding-top: 100px;
   }
 }
