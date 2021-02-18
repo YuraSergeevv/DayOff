@@ -28,6 +28,7 @@
 }
 
 .link-decoration{
+    width: max-content;
     padding-left: 20px;
     position: relative;
     &::after{
@@ -39,14 +40,48 @@
         background-position: center center;
         background-size: contain;
         position: absolute;
-        top: calc(50%- 4px);
+        top:50%;
+        transform: translateY(-50%);
         left: 0;
     }    
-}
+    &::before{
+        overflow: hidden;
+        transition: 0.4s;
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 20px;
+        width: 0;
+        height: 1px;
+        background-color: #181818;
+    }
+    &:hover{
+        &::before{
+            width: calc(100% - 18px);
+        }
+    }    
+}  
 
+.drop{
+    font-family: MyriadSetPro ;
+    position: absolute;
+    top:-100% ;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    padding: 75px 0 55px;
+    display: block;
+    background-color:#ffed00;
+    transition: 0.4s;
+}
+.on{
+   top:0px; 
+}
 ///////////////////////////////////////////////
 .header{
     background-color:#181818;
+    position: relative;
+    z-index: 5;
 }
 .container{
     max-width: 1160px;
@@ -62,9 +97,8 @@
 .menu-btn{
     display: block;
     margin-right: 24px;
-    display: block;
     width: 30px;
-    height: 20px;
+    height: 30px;
     background-image: url(../images/menu.png);
     background-position: center center;
     background-repeat: no-repeat;
@@ -125,19 +159,24 @@
 }
 
 
-.line::before{
+.mass_icon::before{
     content: "";
-    width: 166px;
+    width: 165px;
     height: 3px;
     position: absolute;
     background-color:#181818;
-    top:62px;
+    top:59px;
     left: 0;
     transform: translate(calc(-50% + 20px));
     transition: all .5s;
     z-index: 3;
-
+    transition: 0.2s;
 }
+.line::before{
+    top:62px;
+    transition: 0.2s;
+}
+
 .counter{
     position: absolute;
     top:-5px;
@@ -150,13 +189,11 @@
 }
 
 .header__elements-name{
-    display: none;
-}
-.header__elements-name-on{
     font-family: MyriadSetPro ;
-    display: block;
     position: absolute;
-    top:80px; 
+    height: 0;
+    overflow: hidden;
+    top:45px; 
     left: 50%;
     transform: translate(calc(-50% + 5px));
     text-transform: uppercase;
@@ -167,6 +204,11 @@
     letter-spacing: 0.4em;
     color: #080909;
     z-index: 3;
+    transition: all 0.4s;
+}
+.header__elements-name-on{
+    top:80px; 
+    overflow: visible;
 }
 
 
@@ -175,15 +217,7 @@
     position: relative;
 }///////////Menu///////////
 .menu {
-    font-family: MyriadSetPro ;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    padding: 75px 0 55px;
-    display: none;
-    background-color:#ffed00;
+   
 }
 
 .menu__inner {
@@ -202,15 +236,7 @@
 //////////////////////////
 /////Drinks/////
 .drinks{
-    font-family: MyriadSetPro ;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    padding: 75px 0 55px;
-    display: none;
-    background-color:#ffed00;
+  
 }
 .drinks__element{
     display: flex;
@@ -245,15 +271,6 @@
 /////////////////////////////
 ///////////Search///////////
 .search {
-    font-family: MyriadSetPro ;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    padding: 75px 0 55px;
-    display: none;
-    background-color:#ffed00;
 }
 .search__inner {
     display: flex;
@@ -403,15 +420,6 @@
 /////////////////////////////
 /////////Contact/////////
 .contact {
-    font-family: MyriadSetPro ;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    padding: 75px 0 55px;
-    display: none;
-    background-color:#ffed00;
 }
 
 .info__inner {
@@ -505,15 +513,6 @@
 }
 /////////////Favorites///////
 .favorites{
-    font-family: MyriadSetPro ;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    padding: 75px 0 55px;
-    display: none;
-    background-color:#ffed00;
 }
 .favorites-slider__item{
     margin: 0 25px ;
@@ -538,15 +537,7 @@
 ///////////////////////Basket//////////////////////////
 
 .basket {
-    font-family: MyriadSetPro ;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
     padding-top: 65px;
-    display: none;
-    background-color:#ffed00;
     .top__end-text{
         margin-bottom: 0;
         left: 100%;
@@ -1432,42 +1423,11 @@ font-weight: 500;
     color: #181818;
 }
 .footer__column-link{
-    width: max-content;
     margin-top: 40px;
     font-size: 14px;
     line-height: 1.2;
     font-weight: 500;
     color: #181818;
-    padding-left: 20px;
-    position: relative;
-    &::before{
-        overflow: hidden;
-        transition: 0.4s;
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 20px;
-        width: 0;
-        height: 1px;
-        background-color: #181818;
-    }
-    &:hover{
-        &::before{
-            width: calc(100% - 18px);
-        }
-    }    
-    &::after{
-        content: "";
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        background-image:url(../images/arrow.png) ;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        top:calc(50% - 4px);
-        left: 0px;
-    }
 }
 .footer__column-last{
     margin-top: 24px;
@@ -1783,7 +1743,4 @@ input[type=number] {
   .slider__inner .slick-next {
     right: 50px;
   }
- }
- .on{
-     display: block;
  }
